@@ -1,1 +1,6 @@
-console.log('hello world TS!')
+import express from 'express';
+const app = express();
+
+app.listen(5000, () => {
+  console.log('estamos ao vivo na porta 5000');
+})
