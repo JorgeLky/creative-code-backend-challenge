@@ -13,7 +13,7 @@ CREATE TABLE usuarios (
 );
 
 CREATE TABLE enderecos (
-	usuarioId int NOT NULL,
+	usuarioId int,
 	endId SERIAL PRIMARY KEY,
 	endereco varchar(150) NOT NULL,
 	numero int,

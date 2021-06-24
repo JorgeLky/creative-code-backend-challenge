@@ -24,16 +24,16 @@ const getUserById = async (req: Request, res: Response): Promise<Response> => {
 }
 
 const createUser = async (req: Request, res: Response): Promise<Response> => {
-  const {
-    nome,
-    telefone,
-    email,
-    idade,
-    peso,
-    etinia
+  try{
+    const {
+      nome,
+      telefone,
+      email,
+      idade,
+      peso,
+      etinia
   } = req.body;
 
-  try{
     await conn.query(
       'INSERT INTO usuarios (nome, telefone, email, idade, peso, etinia) VALUES ($1, $2, $3, $4, $5, $6)',
       [nome, telefone, email, parseInt(idade), parseInt(peso), etinia]
