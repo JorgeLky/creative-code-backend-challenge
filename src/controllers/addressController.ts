@@ -54,7 +54,7 @@ const createAddress = async (req: Request, res: Response): Promise<Response> => 
 
 const updateAddress = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const id = parseInt(req.params.id);
+    const id: Number = parseInt(req.params.id);
     const {
       endereco,
       numero,

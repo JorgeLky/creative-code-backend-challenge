@@ -12,7 +12,7 @@ export const loginValidation = async (req: Request, res: Response, next: NextFun
 
   try {
 
-    await jwt.verify(authorization, process.env.SECRET);
+    await jwt.verify(authorization, process.env.SECRET as string);
     next();
   } catch (err){
     console.log(err);
