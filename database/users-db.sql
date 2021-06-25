@@ -5,22 +5,22 @@ CREATE TYPE opcoesEtinia AS ENUM('NEGRO','PARDO','BRANCO');
 CREATE TABLE usuarios (
 	usuarioId SERIAL PRIMARY KEY,
 	nome varchar(150) NOT NULL,
-	telefone int,
+	telefone int NOT NULL,
 	email varchar(150) NOT NULL,
 	idade int NOT NULL,
-	peso int,
-	etinia opcoesEtinia
+	peso int NOT NULL,
+	etinia opcoesEtinia NOT NULL
 );
 
 CREATE TABLE enderecos (
 	usuarioId int,
 	endId SERIAL PRIMARY KEY,
 	endereco varchar(150) NOT NULL,
-	numero int,
+	numero int NOT NULL,
 	complemento varchar(50),
-	cep int,
-	cidade varchar(50),
-	estado varchar(5),
+	cep int NOT NULL,
+	cidade varchar(50) NOT NULL,
+	estado varchar(5) NOT NULL,
 	FOREIGN KEY (usuarioId) REFERENCES usuarios (usuarioId)
 );
 
