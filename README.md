@@ -13,7 +13,7 @@ APP_ADMIN= (usuário administrativo do app)
 ADMIN_PASSWORD= (senha do usuário administrativo).
 
 ## Sobre o projeto
-Projeto de uma api crud para cadastramento e consulta de consulta de usuários.
+Projeto de uma api crud para cadastramento e consulta de usuários.
 
 # Tecnologias
 
