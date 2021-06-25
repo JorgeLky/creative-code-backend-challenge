@@ -12,7 +12,7 @@ import {
 
 const usersRouter = Router();
 
-usersRouter.post('/login',loginValidation, login);
+usersRouter.post('/login', login);
 usersRouter.get('/users',loginValidation, getAllUsers);
 usersRouter.get('/users/:id',loginValidation, getUserById);
 usersRouter.post('/users', userValidation, loginValidation, createUser);

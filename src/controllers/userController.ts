@@ -5,13 +5,13 @@ import dotenv from 'dotenv';
 import * as jwt from 'jsonwebtoken';
 dotenv.config();
 
-const login = async(req: Request, res: Response) => {
+const login = async(req: Request, res: Response): Promise<Response> => {
   const { 
     userName,
     password,
   } = req.body;
   if(userName === process.env.APP_ADMIN && password == process.env.ADMIN_PASSWORD) {
-    const token = jwt.sign({ user: process.env.APP_ADMIN }, process.env.SECRET, {
+    const token = jwt.sign({ user: process.env.APP_ADMIN }, process.env.SECRET as string, {
       expiresIn: '1d',
     });
     return res.status(200).json({message: 'usuário autorizado', token});
