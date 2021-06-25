@@ -1,18 +1,22 @@
 import { Router } from 'express';
+import { loginValidation } from '../middlewares/loginValidation';
+import { userValidation } from '../middlewares/infValidation';
 import {
   getAllUsers,
   getUserById,
   createUser,
   deleteUser,
   updateUser,
+  login,
 } from '../controllers/userController';
 
 const usersRouter = Router();
 
-usersRouter.get('/users', getAllUsers);
-usersRouter.get('/users/:id', getUserById);
-usersRouter.post('/users', createUser);
-usersRouter.put('/users/:id', updateUser);
-usersRouter.delete('/users/:id', deleteUser);
+usersRouter.post('/login',loginValidation, login);
+usersRouter.get('/users',loginValidation, getAllUsers);
+usersRouter.get('/users/:id',loginValidation, getUserById);
+usersRouter.post('/users', userValidation, loginValidation, createUser);
+usersRouter.put('/users/:id',userValidation, loginValidation, updateUser);
+usersRouter.delete('/users/:id',loginValidation, deleteUser);
 
 export default usersRouter;

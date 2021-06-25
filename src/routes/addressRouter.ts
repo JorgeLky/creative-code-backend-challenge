@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { loginValidation } from '../middlewares/loginValidation';
+import { addressValidation } from '../middlewares/infValidation';
 import {
   getAllAddress,
   getAddressById,
@@ -9,10 +11,10 @@ import {
 
 const addressRouter = Router();
 
-addressRouter.get('/address', getAllAddress);
-addressRouter.get('/address/:id', getAddressById);
-addressRouter.post('/address', createAddress);
-addressRouter.put('/address/:id', updateAddress);
-addressRouter.delete('/address/:id', deleteAddress);
+addressRouter.get('/address',loginValidation, getAllAddress);
+addressRouter.get('/address/:id',loginValidation, getAddressById);
+addressRouter.post('/address',loginValidation, addressValidation, createAddress);
+addressRouter.put('/address/:id',loginValidation, addressValidation, updateAddress);
+addressRouter.delete('/address/:id',loginValidation, deleteAddress);
 
 export default addressRouter;

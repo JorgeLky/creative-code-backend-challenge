@@ -1,6 +1,24 @@
 import { Request, Response } from 'express';
 import { QueryResult } from 'pg';
 import { conn } from '../database';
+import dotenv from 'dotenv';
+import * as jwt from 'jsonwebtoken';
+dotenv.config();
+
+const login = async(req: Request, res: Response) => {
+  const { 
+    userName,
+    password,
+  } = req.body;
+  if(userName === process.env.APP_ADMIN && password == process.env.ADMIN_PASSWORD) {
+    const token = jwt.sign({ user: process.env.APP_ADMIN }, process.env.SECRET, {
+      expiresIn: '1d',
+    });
+    return res.status(200).json({message: 'usuário autorizado', token});
+  } else {
+    return res.status(404).json({ message: 'usuário não encontrado!' })
+  }
+}
 
 const getAllUsers = async (req: Request, res: Response): Promise<Response> => {
   try{
@@ -88,6 +106,7 @@ const deleteUser = async (req: Request, res: Response): Promise<Response> => {
 }
 
 export {
+  login,
   getAllUsers,
   getUserById,
   createUser,
